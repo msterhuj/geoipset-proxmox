@@ -1,0 +1,19 @@
+[project]
+name = "geoipset-proxmox"
+version = "0.0.0"
+description = "This project populates the Proxmox VE firewall ipset with GeoIP data to block or allow traffic based on geographic location."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "click>=8.2.1",
+    "proxmoxer>=2.2.0",
+    "requests>=2.32.4",
+    "rich>=14.0.0",
+]
+
+[project.scripts]
+geoipset-proxmox = "geoipset_proxmox:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

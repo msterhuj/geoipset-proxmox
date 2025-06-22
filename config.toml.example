@@ -1,0 +1,5 @@
+[proxmox]
+host = "127.0.0.1:8006" # default to localhost:8006
+user = "root@pam" # default to root@pam
+pass = "" # default to empty password
+verify_ssl = false # default to true
