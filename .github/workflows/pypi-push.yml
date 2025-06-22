@@ -1,0 +1,26 @@
+name: Push cli to PyPI
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  build:
+    name: "Build pip package"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: "Set version to pyproject.toml and __init__.py"
+        run: |
+          python scripts/set_version.py ${{ github.event.release.tag_name }}
+      - name: "build and publish to pypi"
+        env:
+          UV_PUBLISH_TOKEN: ${{ secrets.PYPI_TOKEN }}
+        run: |
+          uv build
+          uv publish
